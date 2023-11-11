@@ -5,8 +5,8 @@ export const Menu = () => {
     return (
         <nav>
             <ul>
-                <li><Link to="/home">Home</Link></li>
-                <li><Link to="/users">Users</Link></li>
+                <li className='pt-2 pl-3'><Link to="/home">Home</Link></li>
+                <li className='pt-1 pl-3'><Link to="/users">Users</Link></li>
             </ul>
         </nav>
     )

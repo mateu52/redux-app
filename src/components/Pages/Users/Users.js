@@ -1,29 +1,44 @@
-import React, { useEffect, useState } from "react"
-import { connect } from 'react-redux'
-import { fetchUsers } from "../../reducer"
+import React, { useEffect, useState } from "react";
+import { connect, useDispatch } from 'react-redux';
+import { fetchUsers, resetUsers, getOneUser } from "../../reducer";
 import UserList from "./UserList";
 
-function Users({users, fetchUsers}){
+function Users({users, fetchUsers, resetUsers}){
     const [ localLoading, setLocalLoading ] = useState(true);
+    const [ elemUser, setElem ] = useState(1)
+    const dispatch = useDispatch();
     useEffect(() => {
-        users.length === 0 && fetchUsers();
+        !users && fetchUsers();
+        //fetchUsers();
         setLocalLoading(false);
     },[fetchUsers, users])
-    console.log( users);
+    const handleAddUser = () => {
+        elemUser === 10 ? setElem(1) : setElem(prevValue => prevValue +1) 
+        dispatch(getOneUser(elemUser));
+      };
     return (
-        <div>
-            <h1>Users</h1>
+        <div className="ml-4">
+            <h1 className="pl-4">Users</h1>
                 {localLoading && <p>Loading...</p>}
+                <button onClick={fetchUsers} className="mr-3">Refresh load</button>
+                <button onClick={resetUsers} >Reset list</button>
+                <button onClick={handleAddUser} className="mr-2 ml-2" >add 1 user</button>
+                
+            <br></br>
             <br></br>
             <UserList users={users}/>
         </div>
     )
 }
 const mapStateToProps = state => ({
-    users:state.users,
+    users:state.users.users,
     isLoading: state.users.isLoading,
     isError: state.users.isError
 })
-const mapDispatchToProps = {fetchUsers};
+const mapDispatchToProps = dispatch => ({
+    fetchUsers: () => dispatch(fetchUsers()),
+    resetUsers: () => dispatch(resetUsers()),
+    dispatch,
+});
 
 export default connect(mapStateToProps,mapDispatchToProps)(Users)

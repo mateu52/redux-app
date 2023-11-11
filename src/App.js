@@ -1,6 +1,7 @@
 import React from "react";
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './components/reducer';
+import rootReducer from "./rootReducer";
 import thunk from 'redux-thunk';
 
 import { Provider } from 'react-redux';
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = [thunk];
-const store = createStore(reducer, /* preloadedState, */ composeEnhancers(applyMiddleware(...middleware)));
+const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(applyMiddleware(...middleware)));
 
 
 function App() {

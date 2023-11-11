@@ -2,7 +2,7 @@ import React from "react";
 import UserDetail from "./UserDetail";
 
 function UserList({users}){
-    console.log("hej")
+    console.log(users)
     return(
         <div>
             {users && users.map((user) => {
