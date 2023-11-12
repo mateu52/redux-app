@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from 'react-redux';
 import { fetchUsers, resetUsers, getOneUser } from "../../reducer";
 import UserList from "./UserList";
+import Message from "../../Message/Message";
 
 function Users({users, fetchUsers, resetUsers}){
     const [ localLoading, setLocalLoading ] = useState(true);
@@ -25,6 +26,7 @@ function Users({users, fetchUsers, resetUsers}){
                 <button onClick={handleAddUser} className="mr-2 ml-2" >add 1 user</button>
                 
             <br></br>
+            <Message />
             <br></br>
             <UserList users={users}/>
         </div>
