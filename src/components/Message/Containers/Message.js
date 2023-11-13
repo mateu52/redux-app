@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { info } from "../../../ui/messages";
-function Message({ warning, danger}){
-    const [mess, setMses] = useState('info')
-    // useEffect(() => {
-    //     info=== true ? setMses('info'): null,
-    //     warning=== true ? setMses(warning): null,
-    //     danger=== true ? setMses(danger): null,
-    // })
+import { connect } from "react-redux";
+function Message({ info, warning, danger}){
+
+    const handleClick = () => {
+        return <div>
+                <button>X</button>
+                <p className="info">{info}</p>
+                <p className="warning">{warning}</p>
+                <p className="danger">{danger}</p>
+            </div>
+    }
     return (
-        <div style={info}>
-            <p >{mess}</p>
+        <div className="table">
+            {
+                (info || warning || danger) !== null ? handleClick() : <p></p>
+            }
         </div>
     )
 }
 
-export default Message;
+function mapStateToProps(state){
+    return{
+        info: state.message.info,
+        warning: state.message.warning,
+        danger: state.message.danger,
+    }
+}
+
+export default connect(mapStateToProps, null)(Message);

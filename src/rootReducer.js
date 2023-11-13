@@ -4,7 +4,7 @@ import messageReducer from './components/Message/reducer';
 
 const rootReducer = combineReducers({
     users: userReducer,
-    messages: messageReducer,
+    message: messageReducer,
 })
 
 export default rootReducer;
