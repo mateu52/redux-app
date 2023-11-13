@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from 'react-redux';
-import { fetchUsers, resetUsers, getOneUser } from "../../reducer";
-import UserList from "./UserList";
-import Message from "../../Message/Message";
+import { fetchUsers, resetUsers, getOneUser } from "../../../reducer";
+import UserList from "../Components/UserList";
+import Message from "../../../Message/Containers/Message";
+import { info, warning, danger } from "../../../Message/reducer";
 
 function Users({users, fetchUsers, resetUsers}){
     const [ localLoading, setLocalLoading ] = useState(true);
-    const [ elemUser, setElem ] = useState(1)
+    const [ elemUser, setElem ] = useState(1);
     const dispatch = useDispatch();
     useEffect(() => {
         !users && fetchUsers();
+        dispatch(info);
         //fetchUsers();
         setLocalLoading(false);
     },[fetchUsers, users])
     const handleAddUser = () => {
         elemUser === 10 ? setElem(1) : setElem(prevValue => prevValue +1) 
         dispatch(getOneUser(elemUser));
+        dispatch(warning)
       };
+      const handleReset = () => {
+        resetUsers();
+        //dispatch(typ:danger)
+      }
     return (
         <div className="ml-4">
             <h1 className="pl-4">Users</h1>

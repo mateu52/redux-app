@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import Home from './components/Pages/Home';
-import Users from './components/Pages/Users/Users';
+import Users from './components/Pages/Users/Containers/Users';
 const router = createBrowserRouter([
   {
     path: '/',

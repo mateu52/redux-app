@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from 'react-redux';
 
-const Home = ({users}) => {
-    console.log(users);
+const Home = () => {
     return (
         <div>
             <h1>Home</h1>
@@ -10,10 +8,5 @@ const Home = ({users}) => {
     )
 };
 
-const mapStateToProps = state => ({
-    users:state.users,
-    isLoading: state.users.isLoading,
-    isError: state.users.isError
-})
 
-export default connect(mapStateToProps)(Home);
+export default Home;

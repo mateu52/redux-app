@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { info } from "../../ui/messages";
+import { info } from "../../../ui/messages";
 function Message({ warning, danger}){
     const [mess, setMses] = useState('info')
     // useEffect(() => {
