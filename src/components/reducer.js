@@ -1,6 +1,3 @@
-// export const fetchUsers = (usersCount = 10) => {
-//     return fetch
-// }
 
 const FETCH_USERS_REQUESTED = "users/FETCH_USERS_REQUESTED";
 const FETCH_USERS_SUCCEEDED = "users/FETCH_USERS_SUCCEEDED";
