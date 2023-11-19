@@ -1,27 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { to_zero } from "../reducer";
+import styles from './style.css'
 function Message({ info, warning, danger, closeMSG}){
-
+    const isVisible = info !== '' || warning !== '' || danger !== '';
     useEffect(() => {
-        setTimeout(() => {
-            closeMSG();
-        },100)
-    })
+        let timeout;
+        if(isVisible) {
+            timeout = setTimeout(() => {
+                closeMSG();
+            },3000)
+        }
+        return () => {
+            clearTimeout(timeout);
+        }
+        
+    },[isVisible, closeMSG])
 
-    const handleClick = () => {
-        return <div>
-                <button onClick={closeMSG}>X</button>
-                <p className="info">{info}</p>
-                <p className="warning">{warning}</p>
-                <p className="danger">{danger}</p>
-            </div>
+    const messageStyles = {
+        display: isVisible ? 'block' : 'none'
     }
+
     return (
-        <div className="table">
+        <div className="table" style={messageStyles}>
             {
-                (info || warning || danger) !== null ? handleClick() : <p></p>
-            }
+                isVisible && (
+                <div className="popup" style={styles}>
+                <button className="close" onClick={closeMSG}>X</button>
+                    <p className="info" style={{ display: info !== ''? 'block': 'none'}}>{info}</p>
+                    <p className="warning" style={{ display: warning !== ''? 'block': 'none'}}>{warning}</p>
+                    <p className="danger" style={{ display: danger !== ''? 'block': 'none'}}>{danger}</p>
+                </div>
+            )}
         </div>
     )
 }
