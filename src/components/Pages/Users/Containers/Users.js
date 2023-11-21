@@ -37,10 +37,11 @@ function Users({users, fetchUsers, resetUsers}){
         <div className="ml-4">
             <h1 className="pl-4">Users</h1>
                 {localLoading && <p>Loading...</p>}
-                <button onClick={handleFetch} className="mr-3">Refresh load</button>
-                <button onClick={handleReset} >Reset list</button>
-                <button onClick={handleAddUser} className="mr-2 ml-2" >add 1 user</button>
-                
+                <div className="bg-green-200 text-center divide-x divide-green-300 flex">
+                <button onClick={handleFetch} className="mr-2 basis-1/3" >Refresh load</button>
+                <button onClick={handleReset} className="basis-1/3" >Reset list</button>
+                <button onClick={handleAddUser} className=" ml-2 basis-1/3" >add 1 user</button>
+                </div>
             <br></br>
             <Message />
             <br></br>
