@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import Home from './components/Pages/Home';
 import Users from './components/Pages/Users/Containers/Users';
+import Form from './components/Pages/Form/Form';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/users',
         element: <Users />
+      },
+      {
+        path: '/form',
+        element: <Form />
       }
     ]
   }
