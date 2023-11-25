@@ -1,6 +1,6 @@
 //import React from 'react';
 import { useForm } from 'react-hook-form'
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { sended, fail_send } from '../../Message/reducer';
 import Message from '../../Message/Containers/Message';
 function Form({ dis_send, dis_fail }) {
